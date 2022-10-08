@@ -107,4 +107,139 @@ mv dop_gapClosed.fa dop_scaffold.fa
 ### часть 2 в Colab
 
 https://colab.research.google.com/drive/1cmSKnm2A-ef18s6tiH6QCPiqoLDZRCoU?usp=sharing
+```bash
+def gaps(scaf):
+    numb=0
+    length=0
+    prev=""
+    
+    for l in scaf:
+        if l == "N":
+            if prev != "N":
+                numb+=1
+            length+=1
+        prev=l
+    print(f"Количество гэпов в самом длинном скафолде: {numb}")
+    print(f"Общая длина гэпов в самом длинном скафолде: {length}")
+
+def analysis(file, object_name="object"):
+    with open(file, 'r') as f:
+        lines = f.readlines()
+        
+    n50=0
+    numb=0
+    length=0
+    max_length=0
+    len_array=[]
+    cur=''
+    
+    lines.append(">")
+    
+    for line in lines:
+        if '>' in line:
+            cur_len=len(cur)
+            length+=cur_len
+            len_array.append(cur_len)
+            if cur_len > max_length:
+                max_length = cur_len
+                max_object=cur
+            cur=''
+            numb+=1
+        else:
+            cur+=line
+    
+    len_array = sorted(len_array)
+    
+    tmp_sum=0
+    for leng in len_array:
+        tmp_sum += leng
+        n50=leng
+        if tmp_sum > length / 2:
+            break
+    
+    
+    print(f"Анализ {object_name}ов \n")
+    print(f"Количество: {numb}")
+    print(f"Общая длина: {length}")
+    print(f"Максимальная длина: {max_length}")
+    print(f"n50: {n50}")
+    return max_object
+```
+
+```bash
+a = analysis("/content/hse22_hw1/Data/contig.fa", "контиг")
+```
+Анализ контигов 
+
+Количество: 613
+Общая длина: 3974843
+Максимальная длина: 181549
+n50: 53459
+
+```bash
+a = analysis("/content/hse22_hw1/Data/gap_scaffold.fa", "скафолд")
+gaps(a)
+```
+Анализ скафолдов 
+
+Количество: 72
+Общая длина: 3925037
+Максимальная длина: 3880331
+n50: 3880331
+Количество гэпов в самом длинном скафолде: 150
+Общая длина гэпов в самом длинном скафолде: 6999
+
+```bash
+a = analysis("/content/hse22_hw1/Data/scaffold.fa", "скафолд")
+gaps(a)
+with open(f"longest.fa", "w") as out:
+  out.write(a)
+```
+Анализ скафолдов 
+
+Количество: 72
+Общая длина: 3965676
+Максимальная длина: 3920567
+n50: 3920567
+Количество гэпов в самом длинном скафолде: 39
+Общая длина гэпов в самом длинном скафолде: 2401
+
+
+### доп задание
+
+```bash
+analysis("/content/hse22_hw1/dop_Data/dop_contig.fa", "контиг")
+```
+Анализ контигов 
+
+Количество: 3492
+Общая длина: 3967913
+Максимальная длина: 25915
+n50: 4037
+
+```bash
+a = analysis("/content/hse22_hw1/dop_Data/dop_gap_scaffold.fa", "скафолд")
+gaps(a)
+```
+Анализ скафолдов 
+
+Количество: 477
+Общая длина: 3915328
+Максимальная длина: 759142
+n50: 654901
+Количество гэпов в самом длинном скафолде: 541
+Общая длина гэпов в самом длинном скафолде: 16092
+
+```bash
+a = analysis("/content/hse22_hw1/dop_Data/dop_scaffold.fa", "скафолд")
+gaps(a)
+```
+Анализ скафолдов 
+
+Количество: 477
+Общая длина: 3903241
+Максимальная длина: 756783
+n50: 652961
+Количество гэпов в самом длинном скафолде: 111
+Общая длина гэпов в самом длинном скафолде: 6751
 
