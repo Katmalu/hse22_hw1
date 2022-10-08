@@ -29,6 +29,13 @@ multiqc -o multiqc fastqc
 platanus_trim pe*
 platanus_internal_trim mp*
 ```
+Удаляем ненужные данные:
+```bash
+rm pe1.fastq
+rm pe2.fastq
+rm mp1.fastq
+rm mp2.fastq
+```
 Оцениваем обрезанные чтения и создаем отчёт:
 ```bash
 mkdir fastqc_trimmed
@@ -38,6 +45,36 @@ mkdir multiqc_trimmed
 multiqc -o multiqc_trimmed fastqc_trimmed
 ```
 
+Отчёт multiqc по обрезанным чтениям:
 ![Снимок экрана (1998)](https://user-images.githubusercontent.com/103137801/194595982-ea13b30e-89b5-42e6-9631-eff540eeb22f.png)
 ![fastqc_per_base_sequence_quality_plot (1)](https://user-images.githubusercontent.com/103137801/194595696-7b5aad72-9f62-4e8b-9fd0-5ff3089606c1.png)
 ![fastqc_per_sequence_quality_scores_plot (1)](https://user-images.githubusercontent.com/103137801/194595781-5723b67a-651c-4518-9034-60115ebadc8f.png)
+
+Строим контиги:
+```bash
+platanus assemble -f pe1.fastq.trimmed  pe2.trimmed -o files
+```
+
+Строим скафолды:
+```bash
+platanus scaffold -c files_contig.fa pe1.fastq.trimmed pe2.fastq.trimmed -OP2 mp1.fastq.int_trimmed mp2.fastq.int_trimmed -o files
+```
+
+Сокращаем гэпы:
+```bash
+platanus gap_close -c files_scaffold.fa -IP1 pe1.fastq.trimmed pe2.fastq.trimmed -OP2 mp1.fastq.int_trimmed mp2.fastq.int_trimmed -o files
+```
+
+Удаляем ненужные данные:
+```bash
+rm pe1.fastq.trimmed
+rm pe2.fastq.trimmed
+rm mp1.fastq.int_trimmed
+rm mp2.fastq.int_trimmed
+```
+
+### часть 2 в Colab
+
+```bash
+
+```
