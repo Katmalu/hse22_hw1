@@ -72,8 +72,16 @@ rm pe2.fastq.trimmed
 rm mp1.fastq.int_trimmed
 rm mp2.fastq.int_trimmed
 ```
+Переименование для удобства:
+```bash
+mv files_contig.fa contig.fa
+mv files_scaffold.fa gap_scaffold.fa
+mv files_gapClosed.fa scaffold.fa
+```
+Скачиваем contig.fa, gap_scaffold.fa и scaffold.fa.
 
 ### часть 2 в Colab
+
 
 ```bash
 
