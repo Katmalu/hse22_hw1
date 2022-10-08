@@ -55,7 +55,7 @@ multiqc -o multiqc_trimmed fastqc_trimmed
 platanus assemble -f pe1.fastq.trimmed  pe2.fastq.trimmed -o files
 ```
 
-Строим скафолды:
+Строим скаффолды:
 ```bash
 platanus scaffold -c files_contig.fa -IP1 pe1.fastq.trimmed pe2.fastq.trimmed -OP2 mp1.fastq.int_trimmed mp2.fastq.int_trimmed -o files
 ```
@@ -119,8 +119,8 @@ def gaps(scaf):
                 numb+=1
             length+=1
         prev=l
-    print(f"Количество гэпов в самом длинном скафолде: {numb}")
-    print(f"Общая длина гэпов в самом длинном скафолде: {length}")
+    print(f"Количество гэпов в самом длинном скаффолде: {numb}")
+    print(f"Общая длина гэпов в самом длинном скаффолде: {length}")
 
 def analysis(file, object_name="object"):
     with open(file, 'r') as f:
@@ -177,32 +177,32 @@ a = analysis("/content/hse22_hw1/Data/contig.fa", "контиг")
 n50: 53459
 
 ```bash
-a = analysis("/content/hse22_hw1/Data/gap_scaffold.fa", "скафолд")
+a = analysis("/content/hse22_hw1/Data/gap_scaffold.fa", "скаффолд")
 gaps(a)
 ```
-Анализ скафолдов 
+Анализ скаффолдов 
 
 Количество: 72
 Общая длина: 3925037
 Максимальная длина: 3880331
 n50: 3880331
-Количество гэпов в самом длинном скафолде: 150
-Общая длина гэпов в самом длинном скафолде: 6999
+Количество гэпов в самом длинном скаффолде: 150
+Общая длина гэпов в самом длинном скаффолде: 6999
 
 ```bash
-a = analysis("/content/hse22_hw1/Data/scaffold.fa", "скафолд")
+a = analysis("/content/hse22_hw1/Data/scaffold.fa", "скаффолд")
 gaps(a)
 with open(f"longest.fa", "w") as out:
   out.write(a)
 ```
-Анализ скафолдов 
+Анализ скаффолдов 
 
 Количество: 72
 Общая длина: 3965676
 Максимальная длина: 3920567
 n50: 3920567
-Количество гэпов в самом длинном скафолде: 39
-Общая длина гэпов в самом длинном скафолде: 2401
+Количество гэпов в самом длинном скаффолде: 39
+Общая длина гэпов в самом длинном скаффолде: 2401
 
 
 ### доп задание
@@ -218,28 +218,28 @@ analysis("/content/hse22_hw1/dop_Data/dop_contig.fa", "контиг")
 n50: 4037
 
 ```bash
-a = analysis("/content/hse22_hw1/dop_Data/dop_gap_scaffold.fa", "скафолд")
+a = analysis("/content/hse22_hw1/dop_Data/dop_gap_scaffold.fa", "скаффолд")
 gaps(a)
 ```
-Анализ скафолдов 
+Анализ скаффолдов 
 
 Количество: 477
 Общая длина: 3915328
 Максимальная длина: 759142
 n50: 654901
-Количество гэпов в самом длинном скафолде: 541
-Общая длина гэпов в самом длинном скафолде: 16092
+Количество гэпов в самом длинном скаффолде: 541
+Общая длина гэпов в самом длинном скаффолде: 16092
 
 ```bash
-a = analysis("/content/hse22_hw1/dop_Data/dop_scaffold.fa", "скафолд")
+a = analysis("/content/hse22_hw1/dop_Data/dop_scaffold.fa", "скаффолд")
 gaps(a)
 ```
-Анализ скафолдов 
+Анализ скаффолдов 
 
 Количество: 477
 Общая длина: 3903241
 Максимальная длина: 756783
 n50: 652961 
-Количество гэпов в самом длинном скафолде: 111
-Общая длина гэпов в самом длинном скафолде: 6751
+Количество гэпов в самом длинном скаффолде: 111
+Общая длина гэпов в самом длинном скаффолде: 6751
 
