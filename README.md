@@ -57,7 +57,7 @@ platanus assemble -f pe1.fastq.trimmed  pe2.fastq.trimmed -o files
 
 Строим скафолды:
 ```bash
-platanus scaffold -c files_contig.fa pe1.fastq.trimmed pe2.fastq.trimmed -OP2 mp1.fastq.int_trimmed mp2.fastq.int_trimmed -o files
+platanus scaffold -c files_contig.fa -IP1 pe1.fastq.trimmed pe2.fastq.trimmed -OP2 mp1.fastq.int_trimmed mp2.fastq.int_trimmed -o files
 ```
 
 Сокращаем гэпы:
@@ -93,7 +93,7 @@ rm pe2.fastq
 rm mp1.fastq
 rm mp2.fastq
 platanus assemble -f pe1.fastq.trimmed  pe2.fastq.trimmed -o dop
-platanus scaffold -c dop_contig.fa pe1.fastq.trimmed pe2.fastq.trimmed -OP2 mp1.fastq.int_trimmed mp2.fastq.int_trimmed -o dop
+platanus scaffold -c dop_contig.fa -IP1 pe1.fastq.trimmed pe2.fastq.trimmed -OP2 mp1.fastq.int_trimmed mp2.fastq.int_trimmed -o dop
 platanus gap_close -c dop_scaffold.fa -IP1 pe1.fastq.trimmed pe2.fastq.trimmed -OP2 mp1.fastq.int_trimmed mp2.fastq.int_trimmed -o dop
 rm pe1.fastq.trimmed
 rm pe2.fastq.trimmed
