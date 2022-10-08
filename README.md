@@ -52,7 +52,7 @@ multiqc -o multiqc_trimmed fastqc_trimmed
 
 Строим контиги:
 ```bash
-platanus assemble -f pe1.fastq.trimmed  pe2.trimmed -o files
+platanus assemble -f pe1.fastq.trimmed  pe2.fastq.trimmed -o files
 ```
 
 Строим скафолды:
@@ -80,7 +80,29 @@ mv files_gapClosed.fa scaffold.fa
 ```
 Скачиваем contig.fa, gap_scaffold.fa и scaffold.fa.
 
-Для доп части проднлаем аналогичные действия на 500000 и 150000 чтениях соответственно.
+Для доп части проднлаем аналогичные действия на 500000 и 150000 чтениях соответственно:
+```bash
+seqtk sample -s1211 oil_R1.fastq 500000 > pe1.fastq
+seqtk sample -s1211 oil_R2.fastq 500000 > pe2.fastq
+seqtk sample -s1211 oilMP_S4_L001_R1_001.fastq 150000 > mp1.fastq
+seqtk sample -s1211 oilMP_S4_L001_R2_001.fastq 150000 > mp2.fastq
+platanus_trim pe*
+platanus_internal_trim mp*
+rm pe1.fastq
+rm pe2.fastq
+rm mp1.fastq
+rm mp2.fastq
+platanus assemble -f pe1.fastq.trimmed  pe2.fastq.trimmed -o dop
+platanus scaffold -c dop_contig.fa pe1.fastq.trimmed pe2.fastq.trimmed -OP2 mp1.fastq.int_trimmed mp2.fastq.int_trimmed -o dop
+platanus gap_close -c dop_scaffold.fa -IP1 pe1.fastq.trimmed pe2.fastq.trimmed -OP2 mp1.fastq.int_trimmed mp2.fastq.int_trimmed -o dop
+rm pe1.fastq.trimmed
+rm pe2.fastq.trimmed
+rm mp1.fastq.int_trimmed
+rm mp2.fastq.int_trimmed
+mv dop_scaffold.fa dop_gap_scaffold.fa
+mv dop_gapClosed.fa dop_scaffold.fa
+```
+Скачиваем dop_contig.fa, dop_gap_scaffold.fa и dop_scaffold.fa в другую папку.
 
 ### часть 2 в Colab
 
