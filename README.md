@@ -208,7 +208,7 @@ n50: 3920567
 ### доп задание
 
 ```bash
-analysis("/content/hse22_hw1/dop_Data/dop_contig.fa", "контиг")
+a = analysis("/content/hse22_hw1/dop_Data/dop_contig.fa", "контиг")
 ```
 Анализ контигов 
 
