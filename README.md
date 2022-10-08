@@ -80,7 +80,7 @@ mv files_gapClosed.fa scaffold.fa
 ```
 Скачиваем contig.fa, gap_scaffold.fa и scaffold.fa.
 
-Для доп части проднлаем аналогичные действия на 500000 и 150000 чтениях соответственно:
+Для доп части проделаем аналогичные действия на 500000 и 150000 чтениях соответственно:
 ```bash
 seqtk sample -s1211 oil_R1.fastq 500000 > pe1.fastq
 seqtk sample -s1211 oil_R2.fastq 500000 > pe2.fastq
