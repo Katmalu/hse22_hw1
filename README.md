@@ -106,7 +106,5 @@ mv dop_gapClosed.fa dop_scaffold.fa
 
 ### часть 2 в Colab
 
+https://colab.research.google.com/drive/1cmSKnm2A-ef18s6tiH6QCPiqoLDZRCoU?usp=sharing
 
-```bash
-
-```
