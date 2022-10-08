@@ -80,6 +80,8 @@ mv files_gapClosed.fa scaffold.fa
 ```
 Скачиваем contig.fa, gap_scaffold.fa и scaffold.fa.
 
+Для доп части проднлаем аналогичные действия на 500000 и 150000 чтениях соответственно.
+
 ### часть 2 в Colab
 
 
